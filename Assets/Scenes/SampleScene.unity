@@ -728,7 +728,7 @@ Transform:
   m_GameObject: {fileID: 784981297}
   m_LocalRotation: {x: 0.6832975, y: -0.044445235, z: 0.05028279, w: 0.7270494}
   m_LocalPosition: {x: 0.283, y: -0.264, z: 0.107}
-  m_LocalScale: {x: 0.1, y: 0.5800001, z: 0.1}
+  m_LocalScale: {x: 0.08, y: 0.5800001, z: 0.08}
   m_Children: []
   m_Father: {fileID: 709599955}
   m_RootOrder: 1
@@ -803,8 +803,11 @@ GameObject:
   m_Component:
   - component: {fileID: 909842299}
   - component: {fileID: 909842300}
+  - component: {fileID: 909842301}
+  - component: {fileID: 909842303}
+  - component: {fileID: 909842302}
   m_Layer: 9
-  m_Name: WeaponParent
+  m_Name: M14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -835,7 +838,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b6956a7842fc6474ea26f8c4b3e77719, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 52eee3472cd0d7744a172523797ea3ea, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -921,6 +924,104 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &909842301
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909842298}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b15115b5bac8b064ea9550b7e23effde, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &909842302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909842298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb354950eaf143a458f75d89cee6a9cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 963194227}
+  muzzle: {fileID: 1896039127}
+  sight: {fileID: 1477867774}
+  damage: 10
+  range: 100
+  adsSpeed: 8
+  magSize: 10
+  curMag: 30
+  curAmmo: 30
+  curSpareAmmo: 210
+  defaultSpareAmmo: 210
+  maxSpareAmmo: 210
+  muzzleFlash: {fileID: 3772861486174297178}
+  bulletTrail: {fileID: 1003485616670832, guid: 2298236a23b5c4349b5f8204068aadf3,
+    type: 3}
+  bloodSplat: {fileID: 166404, guid: 78e1c8c5b281b8b439229473779ac9aa, type: 3}
+  originalPosition: {x: 0, y: 0, z: 0}
+  aimPosition: {x: 0, y: -0.164, z: 0}
+  hipReticle: {fileID: 1169828985}
+  canADS: 1
+  hipBloom: 2
+  vRecoil: 4
+  hRecoil: 2
+  kickback: 0.02
+  canFire: 0
+  reloading: 0
+  roundChambered: 0
+--- !u!114 &909842303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909842298}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e5cf4b99a14b948a16f13e05f85dcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 963194227}
+  muzzle: {fileID: 1896039127}
+  sight: {fileID: 1477867774}
+  damage: 10
+  range: 100
+  adsSpeed: 8
+  magSize: 20
+  curMag: 30
+  curAmmo: 30
+  curSpareAmmo: 210
+  defaultSpareAmmo: 210
+  maxSpareAmmo: 210
+  muzzleFlash: {fileID: 3772861486174297178}
+  bulletTrail: {fileID: 1003485616670832, guid: 2298236a23b5c4349b5f8204068aadf3,
+    type: 3}
+  bloodSplat: {fileID: 166404, guid: 78e1c8c5b281b8b439229473779ac9aa, type: 3}
+  originalPosition: {x: 0, y: 0, z: 0}
+  aimPosition: {x: 0, y: -0.164, z: 0}
+  hipReticle: {fileID: 1169828985}
+  canADS: 1
+  hipBloom: 2
+  vRecoil: 4
+  hRecoil: 2
+  kickback: 0.02
+  canFire: 0
+  reloading: 0
+  roundChambered: 0
+  rpm: 300
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,7 +1152,7 @@ Transform:
   m_GameObject: {fileID: 1069828548}
   m_LocalRotation: {x: 0.52436966, y: 0.1422538, z: -0.21980576, w: 0.81023806}
   m_LocalPosition: {x: 0.075, y: -0.29200006, z: 0.523}
-  m_LocalScale: {x: 0.1, y: 0.58, z: 0.1}
+  m_LocalScale: {x: 0.08, y: 0.58, z: 0.08}
   m_Children: []
   m_Father: {fileID: 709599955}
   m_RootOrder: 0
@@ -2015,10 +2116,8 @@ GameObject:
   - component: {fileID: 23492083549753315}
   - component: {fileID: 64455403452086423}
   - component: {fileID: 1914152664659402}
-  - component: {fileID: 1914152664659403}
-  - component: {fileID: 1914152664659404}
   m_Layer: 9
-  m_Name: M14 EBR
+  m_Name: Weapon Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2120,79 +2219,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1914152664659403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914152664659401}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1e5cf4b99a14b948a16f13e05f85dcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCam: {fileID: 963194227}
-  muzzle: {fileID: 1896039127}
-  sight: {fileID: 1477867774}
-  parent: {fileID: 909842299}
-  damage: 10
-  range: 100
-  adsSpeed: 8
-  magSize: 20
-  curAmmo: 20
-  maxAmmo: 210
-  muzzleFlash: {fileID: 3772861486174297178}
-  bulletTrail: {fileID: 1003485616670832, guid: 2298236a23b5c4349b5f8204068aadf3,
-    type: 3}
-  bloodSplat: {fileID: 166404, guid: 78e1c8c5b281b8b439229473779ac9aa, type: 3}
-  originalPosition: {x: 0, y: 0, z: 0}
-  aimPosition: {x: 0, y: -0.164, z: 0}
-  hipReticle: {fileID: 1169828985}
-  canADS: 1
-  hipBloom: 2
-  vRecoil: 4
-  hRecoil: 2
-  kickback: 0.02
-  canFire: 0
-  reloading: 0
-  rpm: 300
---- !u!114 &1914152664659404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914152664659401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb354950eaf143a458f75d89cee6a9cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCam: {fileID: 963194227}
-  muzzle: {fileID: 1896039127}
-  sight: {fileID: 1477867774}
-  parent: {fileID: 909842299}
-  damage: 10
-  range: 100
-  adsSpeed: 8
-  magSize: 10
-  curAmmo: 30
-  maxAmmo: 210
-  muzzleFlash: {fileID: 3772861486174297178}
-  bulletTrail: {fileID: 1003485616670832, guid: 2298236a23b5c4349b5f8204068aadf3,
-    type: 3}
-  bloodSplat: {fileID: 166404, guid: 78e1c8c5b281b8b439229473779ac9aa, type: 3}
-  originalPosition: {x: 0, y: 0, z: 0}
-  aimPosition: {x: 0, y: -0.164, z: 0}
-  hipReticle: {fileID: 1169828985}
-  canADS: 1
-  hipBloom: 2
-  vRecoil: 4
-  hRecoil: 2
-  kickback: 0.02
-  canFire: 0
-  reloading: 0
 --- !u!1 &1969809594408225
 GameObject:
   m_ObjectHideFlags: 0

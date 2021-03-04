@@ -21,7 +21,7 @@ public class SemiAutoGun : Weapon
 
     protected override void CheckForFire()
     {
-        if (!input.fireDown && curAmmo > 0 && !reloading)
+        if (!input.fireDown && curMag > 0 && !reloading)
         {
             canFire = true;
         }

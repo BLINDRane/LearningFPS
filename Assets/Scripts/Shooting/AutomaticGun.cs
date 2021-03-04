@@ -26,7 +26,7 @@ public class AutomaticGun : Weapon
 
     protected override void CheckForFire()
     {
-        if (Time.time >= nextTimeToFire && curAmmo > 0 && !reloading)
+        if (Time.time >= nextTimeToFire && curMag > 0 && !reloading)
         {
             canFire = true;
         } else

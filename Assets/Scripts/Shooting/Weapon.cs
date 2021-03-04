@@ -10,15 +10,17 @@ public abstract class Weapon : MonoBehaviour
     public Camera mainCam;
     public Transform muzzle;
     public Transform sight;
-    public Transform parent;
 
     [Header("Combat Stats")]
     public float damage = 10f;
     public float range = 100f;
     public float adsSpeed = 8f;
     public int magSize = 30;
+    public int curMag;
     public int curAmmo = 30;
-    public int maxAmmo = 210;
+    public int curSpareAmmo;
+    public int defaultSpareAmmo = 210;
+    public int maxSpareAmmo = 210;
 
     [Header("FX Variables")]
     public ParticleSystem muzzleFlash;
@@ -42,6 +44,7 @@ public abstract class Weapon : MonoBehaviour
     [Header("Operational Info")]
     public bool canFire;
     public bool reloading;
+    public bool roundChambered;
 
     // Start is called before the first frame update
     protected void Init()
@@ -49,10 +52,12 @@ public abstract class Weapon : MonoBehaviour
         input = InputManager.instance;
         audioSource = GetComponent<AudioSource>();
 
-        originalPosition = parent.localPosition;
-        originalRotation = parent.localRotation;
+        originalPosition = transform.localPosition;
+        originalRotation = transform.localRotation;
 
+        curMag = magSize;
         curAmmo = magSize;
+        curSpareAmmo = defaultSpareAmmo;
     }
 
     protected abstract void CheckForFire();
@@ -68,7 +73,7 @@ public abstract class Weapon : MonoBehaviour
             HipShoot();
         }
 
-        curAmmo--;
+        curMag--;
     }
 
     private void ADSShoot()
@@ -99,8 +104,8 @@ public abstract class Weapon : MonoBehaviour
         }
 
         //RECOIL
-        parent.Rotate(-vRecoil, hRecoil, 0);
-        parent.position -= transform.forward * kickback;
+        transform.Rotate(-vRecoil, hRecoil, 0);
+        transform.position -= transform.forward * kickback;
     }
 
     private void HipShoot()
@@ -138,8 +143,8 @@ public abstract class Weapon : MonoBehaviour
         }
 
         //RECOIL
-        parent.Rotate(-vRecoil, hRecoil, 0);
-        parent.position -= parent.transform.forward * kickback;
+        transform.Rotate(-vRecoil, hRecoil, 0);
+        transform.position -= transform.transform.forward * kickback;
     }
 
     protected void AimDownSights()
@@ -151,7 +156,7 @@ public abstract class Weapon : MonoBehaviour
                 hipReticle.SetActive(false);
             }
 
-            parent.localPosition = Vector3.Lerp(parent.localPosition, aimPosition, Time.deltaTime * adsSpeed);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, aimPosition, Time.deltaTime * adsSpeed);
         }
         else
         {
@@ -160,13 +165,13 @@ public abstract class Weapon : MonoBehaviour
                 hipReticle.SetActive(true);
             }
 
-            parent.localPosition = Vector3.Lerp(parent.localPosition, originalPosition, Time.deltaTime * adsSpeed);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, originalPosition, Time.deltaTime * adsSpeed);
         }
     }
 
     protected void CheckForReload()
     {
-        if (input.reloadDown && curAmmo < magSize && !reloading)
+        if (input.reloadDown && curMag < magSize && !reloading)
         {
             reloading = true;
             //play reload anim
@@ -176,21 +181,29 @@ public abstract class Weapon : MonoBehaviour
 
     public void CompleteReload()
     {
-        curAmmo += magSize - curAmmo;
+        curSpareAmmo -= magSize - curMag;
+        curAmmo += magSize - curMag;
+
         reloading = false;
+    }
+
+    public void ChamberRound()
+    {
+        curMag--;
+        roundChambered = true;
     }
 
     protected void ResetPosition()
     {
         if (!input.aimDown)
         {
-            parent.localPosition = Vector3.Lerp(parent.localPosition, originalPosition, Time.deltaTime * 4f);
-            parent.localRotation = Quaternion.Lerp(parent.localRotation, originalRotation, Time.deltaTime * 4f);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, originalPosition, Time.deltaTime * 4f);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, originalRotation, Time.deltaTime * 4f);
         }
         else
         {
-            parent.localPosition = Vector3.Lerp(parent.localPosition, aimPosition, Time.deltaTime * 4f);
-            parent.localRotation = Quaternion.Lerp(parent.localRotation, originalRotation, Time.deltaTime * 4f);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, aimPosition, Time.deltaTime * 4f);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, originalRotation, Time.deltaTime * 4f);
         }
     }
 
